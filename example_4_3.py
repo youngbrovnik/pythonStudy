@@ -2,7 +2,6 @@
 [문제1] 파일 읽고 출력하기
 
 다음은 "test.txt"라는 파일에 "Life is too short" 라는 문자열을 저장한 후 다시 그 파일을 읽어서 출력하는 프로그램이다.
-
 f1 = open("test.txt", 'w')
 f1.write("Life is too short")
 
@@ -10,6 +9,15 @@ f2 = open("test.txt", 'r')
 print(f2.read())
 이 프로그램은 우리가 예상한 "Life is too short"라는 문장을 출력하지 않는다. 우리가 예상한 값을 출력할 수 있도록 프로그램을 수정하시오.
 '''
+# close를 안했음. f.close()를 넣어주거나 with를 사용.
+
+def exam1():
+    with open("test.txt", 'w') as f1:
+        f1.write("Life is too short\n")
+    with open("test.txt", 'r') as f2:
+        print(f2.read())
+
+# exam1()
 
 '''
 [문제2] 파일저장
@@ -21,6 +29,12 @@ print(f2.read())
 저장할 내용을 입력하세요:
 실행 할 때마다 사용자가 입력한 내용이 test.txt파일에 추가되어야 한다.
 '''
+def exam2():
+    with open("test.txt", 'a') as f:
+        inputdata = input("저장할 내용을 입력하세요: ")
+        f.write(inputdata +"\n" )
+
+# exam2()
 
 '''
 [문제3] 역순 저장
@@ -42,6 +56,22 @@ CCC
 BBB
 AAA
 '''
+
+def exam3():
+    lines = ""
+    with open("abc.txt", 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            print(line, end='')
+        print()
+    
+    # with open("abc.txt", 'a') as f:
+    #     line=len(lines)
+    #     for line>0 
+
+
+exam3()
+    
 
 '''
 [문제4] 파일 수정
