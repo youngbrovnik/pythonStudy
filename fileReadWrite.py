@@ -2,7 +2,7 @@
 
 # write
 def write():
-    f = open("newfile.txt", 'w')
+    f = open("data/newfile.txt", 'w')
     for i in range(1,11):
         data = "%d번째 줄입니다.\n" % i
         f.write(data)
@@ -12,7 +12,7 @@ def write():
 
 # readline
 def readline():
-    f = open("newfile.txt", 'r')
+    f = open("data/newfile.txt", 'r')
     while True:
         line = f.readline()
         if not line: break
@@ -23,7 +23,7 @@ def readline():
 
 # readlines
 def readlines():
-    f = open("newfile.txt", 'r')
+    f = open("data/newfile.txt", 'r')
     lines = f.readlines()
     for line in lines:
         print(line, end='')
@@ -33,7 +33,7 @@ def readlines():
 
 # read
 def read():
-    f = open("newfile.txt", 'r')
+    f = open("data/newfile.txt", 'r')
     data = f.read()
     print(data)
     f.close()
@@ -42,7 +42,7 @@ def read():
 
 # adddata
 def adddata():
-    f = open("newfile.txt", 'a')
+    f = open("data/newfile.txt", 'a')
     for i in range(11,20):
         data = "%d번째 줄입니다.\n" % i
         f.write(data)
@@ -52,7 +52,7 @@ def adddata():
 
 # with
 def withtest():
-    with open("newfile.txt", 'r') as f:
+    with open("data/newfile.txt", 'r') as f:
         data = f.read()
         print(data)
 

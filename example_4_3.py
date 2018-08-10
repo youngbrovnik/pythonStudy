@@ -12,9 +12,9 @@ print(f2.read())
 # close를 안했음. f.close()를 넣어주거나 with를 사용.
 
 def exam1():
-    with open("test.txt", 'w') as f1:
+    with open("data/test.txt", 'w') as f1:
         f1.write("Life is too short\n")
-    with open("test.txt", 'r') as f2:
+    with open("data/test.txt", 'r') as f2:
         print(f2.read())
 
 # exam1()
@@ -30,7 +30,7 @@ def exam1():
 실행 할 때마다 사용자가 입력한 내용이 test.txt파일에 추가되어야 한다.
 '''
 def exam2():
-    with open("test.txt", 'a') as f:
+    with open("data/test.txt", 'a') as f:
         inputdata = input("저장할 내용을 입력하세요: ")
         f.write(inputdata +"\n" )
 
@@ -58,20 +58,15 @@ AAA
 '''
 
 def exam3():
-    lines = ""
-    with open("abc.txt", 'r') as f:
+    lines=['']
+    with open("data/abc.txt", 'r') as f:
         lines = f.readlines()
-        for line in lines:
-            print(line, end='')
-        print()
+        lines.reverse()
     
-    # with open("abc.txt", 'a') as f:
-    #     line=len(lines)
-    #     for line>0 
-
-
-exam3()
-    
+    with open("data/abc.txt", 'w') as f:
+        f.writelines(lines)
+        
+# exam3()
 
 '''
 [문제4] 파일 수정
@@ -84,6 +79,19 @@ Life is too short
 you need java
 이 파일의 내용중 java라는 문자열을 python으로 바꾸어서 저장하시오.
 '''
+
+def exam4():
+    lines=['']
+    with open("data/test.txt", 'r') as f:
+        lines = f.readlines()
+    i=0
+    while i<len(lines):
+        lines[i] = lines[i].replace('java', 'py!!!')
+        i+=1    
+    with open("data/test.txt", 'w') as f:
+        f.writelines(lines)
+
+# exam4()
 
 '''
 [문제5] 평균값 구하기
@@ -104,3 +112,17 @@ sample.txt
 100
 sample.txt 파일의 숫자값을 모두 읽어 총합과 평균값을 구한 후 평균값을 result.txt라는 파일에 쓰는 프로그램을 작성해 보자.
 '''
+
+def exam5():
+    ave = 0
+    with open("data/sample.txt", 'r') as file:
+        lines5 = file.readlines()
+        for line in lines5:
+            ave += int(line)
+        ave /= len(lines5)
+    print(ave)
+    
+    with open("data/result.txt", 'w') as f:
+        f.write(str(ave))
+
+# exam5()
